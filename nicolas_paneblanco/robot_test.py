@@ -1,5 +1,6 @@
 import unittest
 from nicolas_paneblanco.robot import Robot
+from nicolas_paneblanco.alien import Alien
 
 
 class TestRobot(unittest.TestCase):
@@ -54,9 +55,11 @@ class TestRobot(unittest.TestCase):
 
     def test_elRobotRealizaUnDisparo(self):
         """ El robot realiza un disparo y pierde el 10% de su batería"""
+        alien = Alien()
+
         self.assertEqual(self.robot.bateria, 10)
 
-        self.robot.disparar("objetivo")
+        self.robot.disparar(alien)
 
         self.assertEqual(self.robot.bateria, 9)
 

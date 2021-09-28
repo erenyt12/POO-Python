@@ -44,7 +44,7 @@ class Robot(object):
         unidades_requeridas = self.__consumo(metros)
 
         if self.__consumoAccesible(unidades_requeridas):
-            self.__bateria = self.bateria - unidades_requeridas
+            self.__bateria -= unidades_requeridas
         else:
             raise ValueError('Bateria insuficiente.')
 
@@ -53,9 +53,10 @@ class Robot(object):
         if self.__cargaExcedeElMaximo(unidades):
             self.__bateria = 100
         else:
-            self.__bateria = self.bateria + unidades
+            self.__bateria += unidades
 
     def disparar(self, objetivo):
         """ Disparar a un objetivo le consume el 10% de la batería """
         quita = self.bateria * 0.1
-        self.__bateria = self.bateria - quita
+        self.__bateria -= quita
+        objetivo.recibirDisparo()

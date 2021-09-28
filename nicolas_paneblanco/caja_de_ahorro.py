@@ -15,29 +15,29 @@
         el comportamiento.  
 """
 
+
 class CajaDeAhorro(object):
     def __init__(self, titular, saldo):
-      self.__titular = titular
-      self.__saldo = saldo
-      
-      
+        self.__titular = titular
+        self.__saldo = saldo
+
     @property
     def titular(self): return self.__titular
-    
+
     @property
     def saldo(self): return self.__saldo
-    
+
     # -------- Metodos de la clase -------- #
     def depositar(self, un_monto): self.__saldo = un_monto
-    
-    def extraer(self, un_monto): 
+
+    def extraer(self, un_monto):
         if un_monto <= self.saldo:
-            self.__saldo = self.__saldo - un_monto
+            self.__saldo -= un_monto
         else:
             raise ValueError('Imposible realizar la extracción.')
-        
+
 
 if __name__ == "__main__":
-    cuenta  = CajaDeAhorro('Niko', 0)
-    
+    cuenta = CajaDeAhorro('Niko', 0)
+
     print(hasattr(cuenta, 'saldo'))
