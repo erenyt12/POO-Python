@@ -69,3 +69,7 @@ class TestAlien(unittest.TestCase):
 
         self.assertEqual(robot.bateria, 9)
         self.assertEqual(self.alien.energia, 4)
+
+
+if __name__ == "__main__":
+    unittest.main()
