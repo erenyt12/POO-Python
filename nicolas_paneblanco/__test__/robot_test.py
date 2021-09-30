@@ -1,6 +1,6 @@
 import unittest
-from nicolas_paneblanco.robot import Robot
-from nicolas_paneblanco.alien import Alien
+from robot import Robot
+from alien import Alien
 
 
 class TestRobot(unittest.TestCase):
