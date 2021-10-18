@@ -47,7 +47,8 @@ class CajaDeAhorro(object):
         return un_monto <= self.saldo
 
     def extraer(self, un_monto: float):
-        """ Extrae un monto de la cuenta, sino arroja una excepción """
+        """ Extrae un monto de la cuenta, sino arroja la excepción: 
+            -> ValueError('Imposible realizar la extracción.')"""
         if self.puedeExtraer(un_monto):
             self.__saldo -= un_monto
         else:
