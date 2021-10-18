@@ -7,8 +7,8 @@ class TestBanco(unittest.TestCase):
     def test_elBancoTranfiereUnMontoEntreCuentas(self):
         """ Se tranfiere un monto de una cuenta a otra """
         banco = Banco()
-        cuenta_1 = CajaDeAhorro('Nicolas', 1000)
-        cuenta_2 = CajaDeAhorro('Martin', 0)
+        cuenta_1 = CajaDeAhorro('Nicolas', 1000, 1)
+        cuenta_2 = CajaDeAhorro('Martin', 0, 1)
         
         self.assertEqual(cuenta_2.saldo, 0)
         

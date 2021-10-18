@@ -5,12 +5,12 @@ from caja_de_ahorro import CajaDeAhorro
 class TestCajaDeAhorro(unittest.TestCase):
     # ------ setup de la clase CajaDeAhorro ------ #
     def setUp(self) -> None:
-        self.cuenta = CajaDeAhorro('Ruben', 0)
+        self.cuenta = CajaDeAhorro('Ruben', 0, 2)
 
     
     def test_cuentaInicializaConElMontoEspecificado(self):
         """ Al crear la caja de ahorro se especifica el saldo inicial """
-        cuenta = CajaDeAhorro('Marcos', 100)
+        cuenta = CajaDeAhorro('Marcos', 100, 2)
 
         self.assertEqual(cuenta.saldo, 100)
 
@@ -55,7 +55,47 @@ class TestCajaDeAhorro(unittest.TestCase):
             self.cuenta.extraer(500)
 
         self.assertEqual(self.cuenta.saldo, 0)
+        
+    def test_cantidadDeExtraccionesValidas(self):
+        """ La caja fue creada con un maximo de dos extracciones maximas """
+        self.cuenta.depositar(1000)
+        
+        self.assertEqual(self.cuenta.extraccionesPosibles, 2)
+        self.assertEqual(self.cuenta.extraccionesRealizadas, 0)
+        
+        self.cuenta.extraer(100)
+        self.cuenta.extraer(100)
 
-
+        self.assertEqual(self.cuenta.extraccionesRealizadas, 2)
+        
+        
+    def test_cantidadDeExtraccionesNoValidas(self):
+        """ La caja fue creada con un maximo de dos extracciones maximas """
+        self.cuenta.depositar(1000)
+        
+        self.assertEqual(self.cuenta.extraccionesRealizadas, 0)
+        
+        self.cuenta.extraer(100)
+        self.cuenta.extraer(100)
+        
+        with self.assertRaisesRegex(ValueError, "Imposible realizar la extracción."):
+            self.cuenta.extraer(100)
+        self.assertEqual(self.cuenta.extraccionesRealizadas, 2)
+        
+    
+    def test_restaurarLasExtracciones(self):
+        """ La caja de ahorro puede restaurar las extracciones a 0 """
+        self.cuenta.depositar(1000)
+        self.cuenta.extraer(100)
+        self.cuenta.extraer(100)
+        
+        self.assertEqual(self.cuenta.extraccionesRealizadas, self.cuenta.extraccionesPosibles)
+        
+        self.cuenta.restaurarExtraciones()
+        
+        self.assertNotEqual(self.cuenta.extraccionesRealizadas, self.cuenta.extraccionesPosibles)
+        self.assertEqual(self.cuenta.extraccionesRealizadas, 0)
+        
+        
 if __name__ == "__main__":
     unittest.main()
