@@ -19,17 +19,34 @@
         2. Implemente dichos mensajes y escriba los tests que prueben su correcto funcionamiento.
         3. Implemente el test planteado originalmente y verifique que se ejecute correctamente.
 """
-class Mosquito(object):    
+class Mosquito(object):  
+    """ 
+        Clase Mosquito
+        
+        Atributos:
+            - vida: representa la vida del mosquito
+            
+        Metodos:
+            - inicializar: inicializa la vida del Mosquito 
+            - recibioDisparo: responde True si el Mosquito esta muerto
+            - recibirDisparo: cambia el esta de la vida del Mosquito
+    """  
     def __init__(self) -> None:
-        self.__vive = False
+        self.__vida = False
     
     @property
-    def vive(self): return self.__vive
+    def vive(self): return self.__vida
     
     # ------ Metodos publicos ---- #
-    def inicializar(self): self.__vive = True
+    def inicializar(self): 
+        """ Inicializa la vida del Mosquito """
+        self.__vida = True
     
-    def recibioDisparo(self): return self.vive == False
+    def recibioDisparo(self): 
+        """ Responde True si el mosquito esta muerto """
+        return not self.vive 
     
-    def recibirDisparo(self): self.__vive = False
+    def recibirDisparo(self): 
+        """ Cambia el estado del Mosquito """
+        self.__vida = False
     

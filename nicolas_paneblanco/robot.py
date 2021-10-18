@@ -15,48 +15,50 @@
 
 
 class Robot(object):
-    def __init__(self, bateria):
-        self.__bateria = bateria
+    """ Clase Robot
+        
+        Atributos: 
+            batería: representa la batería con la que cuenta
+            
+        Metodos:
+            caminar: consume unidades de energia, en caso de no contar 
+                        con la capacidad de carga arroja una excepción.
+                        
+            cargarBateria: le permite agregar unidades de carga.
+            
+            disparar: consume unidades de energía, y envia el mensaje 
+                        recibirDisparo al objeto que recibe como parametro.
+    """
+    def __init__(self, unidades_de_bateria: int) -> None:
+        self.__bateria = unidades_de_bateria
 
     @property
     def bateria(self): return self.__bateria
 
-    #------------ Metodos privados ---------- #
-
-    def __consumo(__, metros):
-        """ Calcula las unidades de bateria requeridas para recorrer una distancia """
-        return metros / 10
-
-    def __consumoAccesible(self, unidades):
-        """ Determina si el consumo es accesible """
-        return self.bateria >= unidades
-
-    def __cargaExcedeElMaximo(self, unidades):
-        """ Determina si la carga mas la bateria existente excede la carga maxima"""
-        return self.bateria + unidades > 100
-
     # ---------- Metodos publicos ----------- #
 
-    def caminar(self, metros):
-        """ Caminar requiere 1 unidad cada 10 metros, 
-            en caso de no contar conla batería suficiente 
-            arrojará una excepción."""
-        unidades_requeridas = self.__consumo(metros)
-
-        if self.__consumoAccesible(unidades_requeridas):
-            self.__bateria -= unidades_requeridas
+    def caminar(self, metros: int) -> None:
+        """ Caminar requiere 1 unidad cada 10 metros, en caso de no contar conla 
+            batería suficiente arrojará una excepción."""
+        if self.bateria >= metros / 10:
+            self.__bateria -= metros / 10
         else:
             raise ValueError('Bateria insuficiente.')
+        
 
-    def cargarBateria(self, unidades):
+    def cargarBateria(self, unidades: int) -> None:
         """ Carga la bateria con la cantidad recibida por parametro """
-        if self.__cargaExcedeElMaximo(unidades):
+        if self.bateria + unidades > 100:
             self.__bateria = 100
         else:
             self.__bateria += unidades
+            
 
-    def disparar(self, objetivo):
+    def disparar(self, objetivo: any) -> None:
         """ Disparar a un objetivo le consume el 10% de la batería """
-        quita = self.bateria * 0.1
-        self.__bateria -= quita
+        self.__bateria -= self.bateria * 0.1
         objetivo.recibirDisparo()
+
+
+if __name__ == '__main__':
+    robot = Robot(20)

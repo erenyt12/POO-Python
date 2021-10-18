@@ -12,9 +12,24 @@
         Realizar los test necesarios que validen 
         el comportamiento.  
 """
+from __future__ import annotations
 
 class Fecha(object):
-    def __init__(self, un_dia, un_mes, un_anio) -> None:
+    """ 
+        Clase Fecha
+        
+        Atributos: dia - mes - anio
+        
+        Metodos: 
+            == : igualdad con otra Fecha
+            <  : menor que otra Fecha
+            <= : menor o igual que otra Fecha
+            >= : mayor o igual que otra Fecha
+            >  : mayor que otra Fecha
+            entreDosFechas: responde True si se encuentra entre dos fechas
+                            que recibe por parametro.
+    """
+    def __init__(self, un_dia: int, un_mes: int, un_anio: int) -> None:
         self.__dia = un_dia
         self.__mes = un_mes
         self.__anio = un_anio  
@@ -27,7 +42,8 @@ class Fecha(object):
     def anio(self): return self.__anio
     
     # Overloading del operador "=="
-    def __eq__(self, una_fecha):
+    def __eq__(self, una_fecha: Fecha) -> bool:
+        """ Comparación de igualdad """
         return ( 
                     self.anio == una_fecha.anio and 
                     self.mes  == una_fecha.mes  and 
@@ -35,7 +51,8 @@ class Fecha(object):
                )
     
     # Overloading del operador "<"
-    def __lt__(self, una_fecha):
+    def __lt__(self, una_fecha: Fecha) -> bool:
+        """ Comparación menor a otra Fecha """
         return ( 
                     (   self.anio <  una_fecha.anio ) 
                     or 
@@ -52,7 +69,8 @@ class Fecha(object):
                 )
         
     # Overloading del operador "<="
-    def __le__(self, una_fecha):
+    def __le__(self, una_fecha: Fecha) -> bool:
+        """ Comparación menor o igual a otra Fecha """
         return ( 
                     (   self <  una_fecha ) 
                     or 
@@ -62,16 +80,18 @@ class Fecha(object):
                 )
         
     # Overloading del operador ">="
-    def __ge__(self, una_fecha):
+    def __ge__(self, una_fecha: Fecha) -> bool:
+        """ Comparación mayor o igual a otra Fecha """
         return not self <  una_fecha 
     
     # Overloading del operador ">"
-    def __gt__(self, una_fecha):
+    def __gt__(self, una_fecha: Fecha) -> bool:
+        """ Comparación mayor a otra Fecha """
         return not  self <=  una_fecha 
     
     # Funcion de comparacion entre 
-    def entreDosFechas(self, fecha_inicio, fecha_fin):
-        """ Devuelve unbooleano si se encuentra entre las
+    def entreDosFechas(self, fecha_inicio: Fecha, fecha_fin: Fecha) -> bool:
+        """ Devuelve True si se encuentra entre las
             dos fechas que recibe como parametro."""
         return fecha_inicio <= self and fecha_fin >= self
         

@@ -8,7 +8,7 @@ class TestAlien(unittest.TestCase):
     def setUp(self) -> None:
         self.alien = Alien()
 
-    def test_elAlienIniciaConUnaVidaDe5(self):
+    def test_elAlienIniciaConUnaVidaDeCincoUnidades(self):
         """ Al instanciar un alien inicia con energia en 5 unidades """
         self.assertEqual(self.alien.energia, 5)
 
@@ -48,7 +48,7 @@ class TestAlien(unittest.TestCase):
 
         self.assertEqual(self.alien.energia, 4)
 
-    def test_laRecuperacionNoPuedeSuperarLas5unidades(self):
+    def test_laRecuperacionNoPuedeSuperarLasCincoUnidades(self):
         """ El alien puede recuperarse sin superar las 5 unidades de energia """
         self.alien.recibirDisparo()
 

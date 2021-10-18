@@ -6,6 +6,7 @@
         
         y debera poder:
             - depositar un monto
+            - puedeExtraer un monto
             - extraer un monto
             - en el caso de querer extraer un monto superior 
               al monto disponiple arrojara una 
@@ -17,7 +18,18 @@
 
 
 class CajaDeAhorro(object):
-    def __init__(self, titular, saldo):
+    """ Clase CajaDeAhorro
+
+        Atributos:
+            titular: Nombre del titular de la cuenta.
+            saldo: Saldo con el que se crea la caja de ahorro.
+            
+        Metodos:
+            depositar: permite depositar unmonto en la cuenta.
+            puedeExtraer: responde si es posible retirar un monto.
+            extraer: extrae un monto de la cuenta, si no es posible arroja una excepción.
+    """
+    def __init__(self, titular: str, saldo: float):
         self.__titular = titular
         self.__saldo = saldo
 
@@ -28,10 +40,15 @@ class CajaDeAhorro(object):
     def saldo(self): return self.__saldo
 
     # -------- Metodos de la clase -------- #
-    def depositar(self, un_monto): self.__saldo = un_monto
+    def depositar(self, un_monto: float) -> None: self.__saldo = un_monto
+    
+    def puedeExtraer(self, un_monto: int) -> bool:
+        """ Devuelve true si se puede realizar la extracción """
+        return un_monto <= self.saldo
 
-    def extraer(self, un_monto):
-        if un_monto <= self.saldo:
+    def extraer(self, un_monto: float):
+        """ Extrae un monto de la cuenta, sino arroja una excepción """
+        if self.puedeExtraer(un_monto):
             self.__saldo -= un_monto
         else:
             raise ValueError('Imposible realizar la extracción.')
@@ -40,4 +57,5 @@ class CajaDeAhorro(object):
 if __name__ == "__main__":
     cuenta = CajaDeAhorro('Niko', 0)
 
+    # devuelve si posee el atributo
     print(hasattr(cuenta, 'saldo'))
