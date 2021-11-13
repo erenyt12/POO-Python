@@ -25,11 +25,10 @@ class Alien(object):
             - recibirDisparo: resta una unidad de energia al Alien.
             - reponerse: recarga la energía del Alien en dos unidades.
     """
-    __RECARGA = 2
-    __ENERGIA_MAX = 5
-    __DANIO = 1
-
     def __init__(self) -> None:
+        self.__RECARGA = 2
+        self.__ENERGIA_MAX = 5
+        self.__DANIO = 1
         self.__energia = self.__ENERGIA_MAX
 
     @property

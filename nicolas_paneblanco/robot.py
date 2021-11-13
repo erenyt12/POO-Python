@@ -12,7 +12,10 @@
     Realizar los test necesarios que validen 
     el comportamiento.         
 """
-
+from __future__ import annotations
+from typing import Union
+from alien import Alien
+from mosquito import Mosquito
 
 class Robot(object):
     """ Clase Robot
@@ -31,6 +34,7 @@ class Robot(object):
     """
     def __init__(self, unidades_de_bateria: int) -> None:
         self.__bateria = unidades_de_bateria
+        self.__CELDAS_MAX = 100
 
     @property
     def bateria(self): return self.__bateria
@@ -40,25 +44,30 @@ class Robot(object):
     def caminar(self, metros: int) -> None:
         """ Caminar requiere 1 unidad cada 10 metros, en caso de no contar conla 
             batería suficiente arrojará una excepción."""
-        if self.bateria >= metros / 10:
-            self.__bateria -= metros / 10
+        celdas_necesarias = abs(metros) / 10
+        if self.bateria >= celdas_necesarias:
+            self.__bateria -= celdas_necesarias
         else:
             raise ValueError('Bateria insuficiente.')
         
 
-    def cargarBateria(self, unidades: int) -> None:
+    def cargarBateria(self, celdas_a_cargar: int) -> None:
         """ Carga la bateria con la cantidad recibida por parametro """
-        if self.bateria + unidades > 100:
-            self.__bateria = 100
+        if self.bateria + celdas_a_cargar > self.__CELDAS_MAX:
+            self.__bateria = self.__CELDAS_MAX
         else:
-            self.__bateria += unidades
+            self.__bateria += celdas_a_cargar
             
 
-    def disparar(self, objetivo: any) -> None:
+    def disparar(self, objetivo: Union[Alien,Mosquito,Robot]) -> None:
         """ Disparar a un objetivo le consume el 10% de la batería """
         self.__bateria -= self.bateria * 0.1
         objetivo.recibirDisparo()
+        
 
+    def recibirDisparo(self) -> None:
+        """ Recibir un disparo decrementa el 30% de la bateria """
+        self.__bateria -= self.bateria * 0.3
 
 if __name__ == '__main__':
-    robot = Robot(20)
+    pass

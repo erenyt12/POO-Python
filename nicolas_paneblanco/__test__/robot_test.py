@@ -62,7 +62,16 @@ class TestRobot(unittest.TestCase):
         self.robot.disparar(alien)
 
         self.assertEqual(self.robot.bateria, 9)
+        
+    def test_elRobotRecibeUnDisparo(self):
+        """ Al recibir un disparo el robot decrementa el 30% de su bateria actual """
+        robot_dos = Robot(100)
+        
+        self.assertEqual(robot_dos.bateria, 100)
+        
+        self.robot.disparar(robot_dos)
 
+        self.assertEqual(robot_dos.bateria, 70)
 
 if __name__ == "__main__":
     unittest.main()
