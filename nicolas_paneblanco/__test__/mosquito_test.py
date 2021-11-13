@@ -1,6 +1,6 @@
 import unittest
-from robot import Robot
-from mosquito import Mosquito
+from nicolas_paneblanco.robot import Robot
+from nicolas_paneblanco.mosquito import Mosquito
 
 
 class TestMosquito(unittest.TestCase):

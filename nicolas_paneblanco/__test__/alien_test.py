@@ -1,6 +1,6 @@
 import unittest
-from alien import Alien
-from robot import Robot
+from nicolas_paneblanco.alien import Alien
+from nicolas_paneblanco.robot import Robot
 
 
 class TestAlien(unittest.TestCase):
@@ -27,20 +27,14 @@ class TestAlien(unittest.TestCase):
         self.assertEqual(self.alien.energia, 5)
         self.assertTrue(self.alien.estaVivo())
 
-        self.alien.recibirDisparo()
-        self.alien.recibirDisparo()
-        self.alien.recibirDisparo()
-        self.alien.recibirDisparo()
-        self.alien.recibirDisparo()
+        for _ in range(5): self.alien.recibirDisparo()
 
         self.assertEqual(self.alien.energia, 0)
         self.assertFalse(self.alien.estaVivo())
 
     def test_alienSeReponeLuegoDeRecibirTresDisparos(self):
         """ El alien recibe 3 disparo y se recupera 2 unidades """
-        self.alien.recibirDisparo()
-        self.alien.recibirDisparo()
-        self.alien.recibirDisparo()
+        for _ in range(3): self.alien.recibirDisparo()
 
         self.assertEqual(self.alien.energia, 2)
 

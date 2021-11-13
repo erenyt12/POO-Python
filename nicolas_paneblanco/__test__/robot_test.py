@@ -1,6 +1,6 @@
 import unittest
-from robot import Robot
-from alien import Alien
+from nicolas_paneblanco.robot import Robot
+from nicolas_paneblanco.alien import Alien
 
 
 class TestRobot(unittest.TestCase):
@@ -34,7 +34,6 @@ class TestRobot(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, 'Bateria insuficiente.'):
             self.robot.caminar(101)
-
         self.assertEqual(self.robot.bateria, 10)
 
     def test_robotCarga10UnidadesSuBateria(self):

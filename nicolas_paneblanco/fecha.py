@@ -21,12 +21,16 @@ class Fecha(object):
         Atributos: dia - mes - anio
         
         Metodos: 
-            == : igualdad con otra Fecha
-            <  : menor que otra Fecha
-            <= : menor o igual que otra Fecha
-            >= : mayor o igual que otra Fecha
-            >  : mayor que otra Fecha
-            entreDosFechas: responde True si se encuentra entre dos fechas
+            ✅ dia 
+            ✅ mes
+            ✅ anio 
+            
+            ✅ == : igualdad con otra Fecha
+            ✅ <  : menor que otra Fecha
+            ✅ <= : menor o igual que otra Fecha
+            ✅ >= : mayor o igual que otra Fecha
+            ✅ >  : mayor que otra Fecha
+            ✅ entreDosFechas: responde True si se encuentra entre dos fechas
                             que recibe por parametro.
     """
     def __init__(self, un_dia: int, un_mes: int, un_anio: int) -> None:

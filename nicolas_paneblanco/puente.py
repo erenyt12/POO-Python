@@ -20,8 +20,8 @@
         - si la valla esta baja le envia el mensaje detenerse al vehiculo
           que lo transita.
 """
-from valla import Valla
-from auto import Auto
+from nicolas_paneblanco.valla import Valla
+from nicolas_paneblanco.auto import Auto
 
 class Puente(object):
     """ 

@@ -1,5 +1,5 @@
 import unittest
-from auto import Auto
+from nicolas_paneblanco.auto import Auto
 
 class TestAuto(unittest.TestCase):
     def setUp(self) -> None:

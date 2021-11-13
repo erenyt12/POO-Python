@@ -14,23 +14,19 @@
 """
 from __future__ import annotations
 from typing import Union
-from alien import Alien
-from mosquito import Mosquito
+from nicolas_paneblanco.alien import Alien
+from nicolas_paneblanco.mosquito import Mosquito
 
 class Robot(object):
     """ Clase Robot
         
-        Atributos: 
-            batería: representa la batería con la que cuenta
-            
         Metodos:
-            caminar: consume unidades de energia, en caso de no contar 
-                        con la capacidad de carga arroja una excepción.
-                        
-            cargarBateria: le permite agregar unidades de carga.
+            ✅ batería: representa la batería con la que cuenta.
             
-            disparar: consume unidades de energía, y envia el mensaje 
-                        recibirDisparo al objeto que recibe como parametro.
+            ✅ caminar: requiere 1 unidad cada 10 metros.                        
+            ✅ cargarBateria: agrega unidades de carga.            
+            ✅ disparar: le consume el 10% de la bateria.
+            ✅ recibirDisparo: le consume el 30% de la bateria.
     """
     def __init__(self, unidades_de_bateria: int) -> None:
         self.__bateria = unidades_de_bateria
@@ -43,7 +39,7 @@ class Robot(object):
 
     def caminar(self, metros: int) -> None:
         """ Caminar requiere 1 unidad cada 10 metros, en caso de no contar conla 
-            batería suficiente arrojará una excepción."""
+            batería suficiente arrojará ValueError('Bateria insuficiente.')."""
         celdas_necesarias = abs(metros) / 10
         if self.bateria >= celdas_necesarias:
             self.__bateria -= celdas_necesarias

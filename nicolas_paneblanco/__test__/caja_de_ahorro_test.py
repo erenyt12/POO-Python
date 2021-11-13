@@ -1,5 +1,5 @@
 import unittest
-from caja_de_ahorro import CajaDeAhorro
+from nicolas_paneblanco.caja_de_ahorro import CajaDeAhorro
 
 
 class TestCajaDeAhorro(unittest.TestCase):
@@ -63,8 +63,7 @@ class TestCajaDeAhorro(unittest.TestCase):
         self.assertEqual(self.cuenta.extraccionesPosibles, 2)
         self.assertEqual(self.cuenta.extraccionesRealizadas, 0)
         
-        self.cuenta.extraer(100)
-        self.cuenta.extraer(100)
+        for _ in range(2): self.cuenta.extraer(100)
 
         self.assertEqual(self.cuenta.extraccionesRealizadas, 2)
         
@@ -72,11 +71,9 @@ class TestCajaDeAhorro(unittest.TestCase):
     def test_cantidadDeExtraccionesNoValidas(self):
         """ La caja fue creada con un maximo de dos extracciones maximas """
         self.cuenta.depositar(1000)
+        for _ in range(2): self.cuenta.extraer(100)
         
-        self.assertEqual(self.cuenta.extraccionesRealizadas, 0)
-        
-        self.cuenta.extraer(100)
-        self.cuenta.extraer(100)
+        self.assertEqual(self.cuenta.extraccionesRealizadas, 2)        
         
         with self.assertRaisesRegex(ValueError, "Imposible realizar la extracción."):
             self.cuenta.extraer(100)
@@ -86,8 +83,7 @@ class TestCajaDeAhorro(unittest.TestCase):
     def test_restaurarLasExtracciones(self):
         """ La caja de ahorro puede restaurar las extracciones a 0 """
         self.cuenta.depositar(1000)
-        self.cuenta.extraer(100)
-        self.cuenta.extraer(100)
+        for _ in range(2): self.cuenta.extraer(100)
         
         self.assertEqual(self.cuenta.extraccionesRealizadas, self.cuenta.extraccionesPosibles)
         

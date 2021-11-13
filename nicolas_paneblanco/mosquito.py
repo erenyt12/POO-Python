@@ -23,13 +23,12 @@ class Mosquito(object):
     """ 
         Clase Mosquito
         
-        Atributos:
-            - vida: representa la vida del mosquito
-            
         Metodos:
-            - inicializar: inicializa la vida del Mosquito 
-            - recibioDisparo: responde True si el Mosquito esta muerto
-            - recibirDisparo: cambia el esta de la vida del Mosquito
+            ✅ vida: representa la vida del mosquito
+            
+            ✅ inicializar: inicializa la vida del Mosquito 
+            ✅ recibioDisparo: responde True si el Mosquito esta muerto
+            ✅ recibirDisparo: cambia el esta de la vida del Mosquito
     """  
     def __init__(self) -> None:
         self.__vida = False

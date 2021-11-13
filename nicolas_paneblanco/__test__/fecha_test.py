@@ -1,73 +1,61 @@
 import unittest
-from fecha import Fecha
+from nicolas_paneblanco.fecha import Fecha
 
 
 class TestFecha(unittest.TestCase):
     def setUp(self):
         self._2_4_2020 = Fecha(2, 4, 2020)
 
-    # ---- Test una fecha es igual a otra fecha --------- #
+
     def test_unaFechaEsIgualAOtraFecha(self):
-        _2_4_2020_bis = Fecha(2, 4, 2020)
+        """ Una fecha es igual a otra fecha """
+        self.assertTrue(self._2_4_2020 == Fecha(2, 4, 2020))
 
-        self.assertTrue(self._2_4_2020 == _2_4_2020_bis)
-
-    # ---- Test una fecha es menor que otra fecha --------- #
 
     def test_unaFechaEsMenorQueOtraFecha(self):
-        _1_4_2020 = Fecha(1, 4, 2020)
+        self.assertTrue(Fecha(1, 4, 2020) < self._2_4_2020)
 
-        self.assertTrue(_1_4_2020 < self._2_4_2020)
-
-    # ---- Test una fecha no es menor que otra fecha --------- #
 
     def test_unaFechaNoEsMenorQueOtraFecha(self):
-        _1_4_2020 = Fecha(1, 4, 2020)
+        """ Una fecha no es menor que otra fecha  """
+        self.assertFalse(self._2_4_2020 < Fecha(1, 4, 2020))
 
-        self.assertFalse(self._2_4_2020 < _1_4_2020)
-
-    # ---- Test una fecha es menor o igual a otra fecha --------- #
 
     def test_unaFechaEsMenorOIgualAOtraFecha(self):
-        _1_4_2020 = Fecha(1, 4, 2020)
+        """ Una fecha es menor o igual a otra fecha """
+        self.assertTrue(Fecha(1, 4, 2020) <= self._2_4_2020)
+        
 
-        self.assertTrue(_1_4_2020 <= self._2_4_2020)
-
-    # ---- Test una fecha es menor o igual a otra fecha segundo caso --------- #
     def test_unaFechaEsMenorOIgualAOtraFechaSegundoCaso(self):
-        _2_4_2020_bis = Fecha(2, 4, 2020)
+        """ Una fecha es menor o igual a otra fecha segundo caso  """
+        self.assertTrue(self._2_4_2020 <= Fecha(2, 4, 2020))
 
-        self.assertTrue(self._2_4_2020 <= _2_4_2020_bis)
 
-    # ---- Test una fecha es mayor o igual a otra fecha--------- #
     def test_unaFechaEsMayorOIgualAOtraFecha(self):
-        _1_4_2020 = Fecha(1, 4, 2020)
+        """  Una fecha es mayor o igual a otra fecha """
+        self.assertTrue(self._2_4_2020 >= Fecha(1, 4, 2020))
 
-        self.assertTrue(self._2_4_2020 >= _1_4_2020)
 
-    # ---- Test una fecha es mayor o igual a otra fecha caso 2--------- #
     def test_unaFechaEsMayorOIgualAOtraFechaSegundoCaso(self):
-        _2_4_2020_bis = Fecha(2, 4, 2020)
+        """ Una fecha es mayor o igual a otra fecha caso 2 """
+        self.assertTrue(self._2_4_2020 >= Fecha(2, 4, 2020))
 
-        self.assertTrue(self._2_4_2020 >= _2_4_2020_bis)
 
-    # ---- Test una fecha es mayor a otra fecha --------- #
     def test_unaFechaEsMayorAOtraFecha(self):
-        _1_4_2020 = Fecha(1, 4, 2020)
+        """ Una fecha es mayor a otra fecha """
+        self.assertTrue(self._2_4_2020 > Fecha(1, 4, 2020))
 
-        self.assertTrue(self._2_4_2020 > _1_4_2020)
-
-    # ---- Test una fecha se encuentra entre dos fechas --------- #
 
     def test_unaFechaEstaEntreDosFechas(self):
+        """ Una fecha se encuentra entre dos fechas """
         _10_4_2020 = Fecha(10, 4, 2020)
         _30_4_2020 = Fecha(30, 4, 2020)
 
         self.assertTrue(_10_4_2020.entreDosFechas(self._2_4_2020, _30_4_2020))
 
-    # ---- Test una fecha no se encuentra entre dos fechas --------- #
 
     def test_unaFechaNoEstaEntreDosFechas(self):
+        """ Una fecha no se encuentra entre dos fecha """
         _10_4_2020 = Fecha(10, 4, 2020)
         _30_4_2020 = Fecha(30, 4, 2020)
 

@@ -1,5 +1,5 @@
 import unittest
-from valla import Valla
+from nicolas_paneblanco.valla import Valla
 
 class TestValla(unittest.TestCase):
     def setUp(self) -> None:

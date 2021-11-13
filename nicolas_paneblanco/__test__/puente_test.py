@@ -1,6 +1,6 @@
 import unittest
-from auto import Auto
-from puente import Puente
+from nicolas_paneblanco.auto import Auto
+from nicolas_paneblanco.puente import Puente
 
 class TestPuente(unittest.TestCase):
     def setUp(self) -> None:
@@ -39,6 +39,7 @@ class TestPuente(unittest.TestCase):
 
         self.assertTrue(self.puente.vallaAlta())
 
+
     def test_bajarLaVallaCuandoEstaBaja(self):
         """ Al bajar la valla estando baja su estado no se altera """
         self.puente.bajarValla()
@@ -48,6 +49,7 @@ class TestPuente(unittest.TestCase):
         self.puente.bajarValla()
 
         self.assertFalse(self.puente.vallaAlta())
+
 
     def test_elPuenteRecibeUnAutoConLaVallaAlta(self):
         """ El puente recibe un auto con la valla alta y lo hace circular a 40km/h """

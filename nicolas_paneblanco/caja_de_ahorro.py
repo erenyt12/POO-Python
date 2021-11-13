@@ -25,17 +25,16 @@
 
 class CajaDeAhorro(object):
     """ Clase CajaDeAhorro
-
-        Atributos:
-            titular: Nombre del titular de la cuenta.
-            saldo: Saldo con el que se crea la caja de ahorro.
-            extracciones: cantidad de extracciones mensuales permitidas.
             
         Metodos:
-            depositar: permite depositar unmonto en la cuenta.
-            puedeExtraer: responde si es posible retirar un monto.
-            extraer: extrae un monto de la cuenta, si no es posible arroja una excepción.
-            reastaurarEtracciones: restaura la cantidad de extracciones mensuales.
+            ✅ titular: Nombre del titular de la cuenta.
+            ✅ saldo: Saldo con el que se crea la caja de ahorro.
+            ✅ extracciones: cantidad de extracciones mensuales permitidas.
+            
+            ✅ depositar: permite depositar unmonto en la cuenta.
+            ✅ puedeExtraer: responde si es posible retirar un monto.
+            ✅ extraer: extrae un monto de la cuenta, si no es posible arroja una excepción.
+            ✅ reastaurarEtracciones: restaura la cantidad de extracciones mensuales.
     """
     def __init__(self, titular: str, saldo: float, extracciones_posibles: int) -> None:
         self.__titular = titular

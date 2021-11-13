@@ -16,14 +16,12 @@
 class Alien(object):
     """ 
         Clase Alien
-        
-        Atributos:
-            - energia: representa la energia del objeto
             
         Metodos:
-            - estaVivo: responde si la energía es mayor a 0.
-            - recibirDisparo: resta una unidad de energia al Alien.
-            - reponerse: recarga la energía del Alien en dos unidades.
+            ✅ energia
+            ✅ estaVivo: responde si la energía es mayor a 0.
+            ✅ recibirDisparo: resta una unidad de energia al Alien.
+            ✅ reponerse: recarga la energía del Alien en dos unidades.
     """
     def __init__(self) -> None:
         self.__RECARGA = 2
