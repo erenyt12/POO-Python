@@ -5,7 +5,7 @@ class Puente(object):
     def __init__(self, un_numero: int) -> None:
         self.__numero = un_numero
         self.__valla = Valla()
-        self.__auto = Auto()
+        
 
 
     @property
