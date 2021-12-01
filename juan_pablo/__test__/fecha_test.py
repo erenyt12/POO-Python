@@ -8,9 +8,9 @@ class TestFecha(unittest.TestCase):
         
     def test_unaFechaEsIgualAOtraFecha(self):
         """ igualacion de fecha """
-        _1_2_2001_bis = Fecha(1, 2, 2001)
+        
+        self.assertTrue(self._1_2_2001.esIgual(Fecha(1, 2, 2001)))
 
-        self.assertTrue(self._1_2_2001.esIgual(_1_2_2001_bis))
 
     def test_lasFechasNoSonIguales(self):
         """ Las fechas ingresadas no son iguales """
